@@ -497,6 +497,33 @@ export const USDT_BSC = new Token(
   'USDT'
 );
 
+// Freecity Tokens
+export const BUSD_FREECITY = new Token(
+  ChainId.FREECITY,
+  '0x050f21ea27982e8711c3313b347031328d400563',
+  18,
+  'BUSD',
+  'BUSD'
+);
+
+// Bkc Tokens
+export const USDT_BKC = new Token(
+  ChainId.BKC,
+  '0x7d984c24d2499d840eb3b7016077164e15e5faa6',
+  18,
+  'KUSDT',
+  'KUSDT'
+);
+
+// Bkc testnet Tokens
+export const USDT_BKC_TESTNET = new Token(
+  ChainId.BKC_TESTNET,
+  '0x1f86f79f109060725b6f4146baee9b7aca41267d',
+  18,
+  'KUSDT',
+  'KUSDT'
+);
+
 // Celo Tokens
 export const CELO = new Token(
   ChainId.CELO,
@@ -782,6 +809,12 @@ export const USDT_ON = (chainId: ChainId): Token => {
       return USDT_ARBITRUM_RINKEBY;
     case ChainId.BSC:
       return USDT_BSC;
+    case ChainId.BKC:
+      return USDT_BKC;
+    case ChainId.BKC_TESTNET:
+      return USDT_BKC_TESTNET;
+    case ChainId.FREECITY:
+      return BUSD_FREECITY;
     default:
       throw new Error(`Chain id: ${chainId} not supported`);
   }

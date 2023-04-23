@@ -3,17 +3,17 @@ import { Token } from '@uniswap/sdk-core';
 
 import {
   BTC_BSC,
-  BUSD_BSC,
+  BUSD_BSC, BUSD_FREECITY,
   DAI_BSC,
   DAI_MAINNET,
   ITokenProvider,
   USDC_BSC,
-  USDC_MAINNET,
+  USDC_MAINNET, USDT_BKC, USDT_BKC_TESTNET,
   USDT_BSC,
   USDT_MAINNET,
   WBTC_MAINNET,
   WMATIC_POLYGON,
-  WMATIC_POLYGON_MUMBAI,
+  WMATIC_POLYGON_MUMBAI
 
 } from '../../providers/token-provider';
 import { ChainId, WRAPPED_NATIVE_CURRENCY } from '../../util/chains';
@@ -64,6 +64,19 @@ export const BASES_TO_CHECK_TRADES_AGAINST = (
       USDC_BSC,
       USDT_BSC,
       BTC_BSC,
+    ],
+    [ChainId.FREECITY]: [
+      WRAPPED_NATIVE_CURRENCY[ChainId.FREECITY]!,
+      BUSD_FREECITY,
+    ],
+    [ChainId.FREECITY_TESTNET]: [],
+    [ChainId.BKC]: [
+      WRAPPED_NATIVE_CURRENCY[ChainId.BKC]!,
+      USDT_BKC,
+    ],
+    [ChainId.BKC_TESTNET]: [
+      WRAPPED_NATIVE_CURRENCY[ChainId.BKC_TESTNET]!,
+      USDT_BKC_TESTNET,
     ],
   };
 };

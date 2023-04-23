@@ -80,6 +80,7 @@ export class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
       poolProvider
     );
 
+
     const calculateL1GasFees = async (
       route: V3RouteWithValidQuote[]
     ): Promise<{
@@ -124,11 +125,15 @@ export class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
         l1FeeInWei.toString()
       );
 
+
+
       // convert fee into usd
       const nativeTokenPrice =
         usdPool.token0.address == nativeCurrency.address
           ? usdPool.token0Price
           : usdPool.token1Price;
+
+
 
       const gasCostL1USD: CurrencyAmount =
         nativeTokenPrice.quote(costNativeCurrency);
@@ -166,6 +171,7 @@ export class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
     // of the quote token in order to produce a gas adjusted amount.
     // We do return a gas use in USD however, so we still convert to usd.
     const nativeCurrency = WRAPPED_NATIVE_CURRENCY[chainId]!;
+
     if (quoteToken.equals(nativeCurrency)) {
       const estimateGasCost = (
         routeWithValidQuote: V3RouteWithValidQuote
@@ -196,6 +202,7 @@ export class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
           gasCostInUSD: gasCostInTermsOfUSD,
         };
       };
+
 
       return {
         estimateGasCost,
@@ -268,7 +275,7 @@ export class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
           `Unable to find ${nativeCurrency.symbol} pool with the quote token, ${quoteToken.symbol} to produce gas adjusted costs. Using amountToken to calculate gas costs.`
         );
       }
-      
+
       // Highest liquidity pool for the non quote token / ETH
       // A pool with the non quote token / ETH should not be required and errors should be handled separately
       if (nativeAmountPool) {
@@ -279,7 +286,7 @@ export class V3HeuristicGasModelFactory extends IOnChainGasModelFactory {
           routeWithValidQuote.amount.quotient,
           routeWithValidQuote.quote.quotient
         );
-        
+
         const inputIsToken0 =
           nativeAmountPool.token0.address == nativeCurrency.address;
         // ratio of input / native

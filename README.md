@@ -209,6 +209,12 @@ Total ticks crossed: 7
 ./bin/cli quote --tokenIn 0x55d398326f99059fF775485246999027B3197955 --tokenOut 0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d --amount 1 --exactIn --minSplits 1 --protocols v3 --router alpha --chainId 56
 ```
 
+## FreeCity Mainnet
+
+```
+./bin/cli quote --tokenIn 0x050f21ea27982e8711c3313b347031328d400563 --tokenOut 0x36419AC651262b91E92aC2A97809E81aefD08D53 --amount 1 --exactIn --minSplits 1 --protocols v3 --router alpha --chainId 2456
+```
+
 ## Adding a new Chain
 
 The main components to complete are:

@@ -10,7 +10,7 @@ import { log } from '../../util/log';
 import {
   ARB_ARBITRUM,
   BTC_BSC,
-  BUSD_BSC,
+  BUSD_BSC, BUSD_FREECITY,
   CELO,
   CELO_ALFAJORES,
   CEUR_CELO,
@@ -51,7 +51,7 @@ import {
   USDC_RINKEBY,
   USDC_ROPSTEN,
   USDT_ARBITRUM,
-  USDT_ARBITRUM_RINKEBY,
+  USDT_ARBITRUM_RINKEBY, USDT_BKC, USDT_BKC_TESTNET,
   USDT_BSC,
   USDT_GÖRLI,
   USDT_KOVAN,
@@ -73,7 +73,7 @@ import {
   WETH_POLYGON,
   WMATIC_POLYGON,
   WMATIC_POLYGON_MUMBAI,
-  WXDAI_GNOSIS,
+  WXDAI_GNOSIS
 } from '../token-provider';
 
 import { IV3PoolProvider } from './pool-provider';
@@ -191,6 +191,22 @@ const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     DAI_MOONBEAM,
     USDC_MOONBEAM,
     WBTC_MOONBEAM,
+  ],
+  [ChainId.BKC]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.BKC],
+    USDT_BKC
+  ],
+  [ChainId.BKC_TESTNET]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.BKC_TESTNET],
+    USDT_BKC_TESTNET
+  ],
+  [ChainId.FREECITY]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.FREECITY],
+    BUSD_FREECITY
+  ],
+  [ChainId.FREECITY_TESTNET]: [
+    WRAPPED_NATIVE_CURRENCY[ChainId.FREECITY_TESTNET],
+    BUSD_FREECITY
   ],
 };
 

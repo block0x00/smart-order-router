@@ -887,6 +887,7 @@ export class AlphaRouter
       quoteToken
     );
 
+
     // Create a Set to sanitize the protocols input, a Set of undefined becomes an empty set,
     // Then create an Array from the values of that Set.
     const protocols: Protocol[] = Array.from(new Set(routingConfig.protocols).values());
@@ -1448,10 +1449,12 @@ export class AlphaRouter
       v2poolProvider: this.v2PoolProvider,
     });
 
+
     const [v3GasModel, mixedRouteGasModel] = await Promise.all([
       v3GasModelPromise,
       mixedRouteGasModelPromise
     ]);
+
 
     metric.putMetric(
       'GasModelCreation',

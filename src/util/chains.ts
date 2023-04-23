@@ -20,6 +20,10 @@ export enum ChainId {
   GNOSIS = 100,
   MOONBEAM = 1284,
   BSC = 56,
+  BKC = 96,
+  BKC_TESTNET = 25925,
+  FREECITY = 2456,
+  FREECITY_TESTNET = 5456,
 }
 
 // WIP: Gnosis, Moonbeam
@@ -40,6 +44,10 @@ export const SUPPORTED_CHAINS: ChainId[] = [
   ChainId.CELO_ALFAJORES,
   ChainId.CELO,
   ChainId.BSC,
+  ChainId.BKC,
+  ChainId.BKC_TESTNET,
+  ChainId.FREECITY,
+  ChainId.FREECITY_TESTNET
   // Gnosis and Moonbeam don't yet have contracts deployed yet
 ];
 
@@ -88,6 +96,14 @@ export const ID_TO_CHAIN_ID = (id: number): ChainId => {
       return ChainId.KOVAN;
     case 56:
       return ChainId.BSC;
+    case 96:
+      return ChainId.BKC;
+    case 25925:
+      return ChainId.BKC_TESTNET;
+    case 2456:
+      return ChainId.FREECITY;
+    case 5456:
+      return ChainId.FREECITY_TESTNET;
     case 10:
       return ChainId.OPTIMISM;
     case 420:
@@ -136,6 +152,10 @@ export enum ChainName {
   GNOSIS = 'gnosis-mainnet',
   MOONBEAM = 'moonbeam-mainnet',
   BSC = 'bsc-mainnet',
+  BKC = 'bkc',
+  BKC_TESTNET = 'bkc-testnet',
+  FREECITY = 'freecity',
+  FREECITY_TESTNET = 'freecity-testnet',
 }
 
 
@@ -147,6 +167,8 @@ export enum NativeCurrencyName {
   GNOSIS = 'XDAI',
   MOONBEAM = 'GLMR',
   BNB = "BNB",
+  KUB = "KUB",
+  ZENNY = "ZENNY"
 }
 export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
   [ChainId.MAINNET]: [
@@ -220,6 +242,26 @@ export const NATIVE_NAMES_BY_ID: { [chainId: number]: string[] } = {
     'BNB',
     '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
   ],
+  [ChainId.BKC]: [
+    'KUB',
+    'KUB',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
+  [ChainId.BKC_TESTNET]: [
+    'KUB',
+    'KUB',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
+  [ChainId.FREECITY]: [
+    'ZENNY',
+    'ZENNY',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
+  [ChainId.FREECITY_TESTNET]: [
+    'ZENNY',
+    'ZENNY',
+    '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
+  ],
 };
 
 export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
@@ -241,6 +283,10 @@ export const NATIVE_CURRENCY: { [chainId: number]: NativeCurrencyName } = {
   [ChainId.GNOSIS]: NativeCurrencyName.GNOSIS,
   [ChainId.MOONBEAM]: NativeCurrencyName.MOONBEAM,
   [ChainId.BSC]: NativeCurrencyName.BNB,
+  [ChainId.BKC]: NativeCurrencyName.KUB,
+  [ChainId.BKC_TESTNET]: NativeCurrencyName.KUB,
+  [ChainId.FREECITY]: NativeCurrencyName.ZENNY,
+  [ChainId.FREECITY_TESTNET]: NativeCurrencyName.ZENNY,
 };
 
 export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
@@ -281,6 +327,14 @@ export const ID_TO_NETWORK_NAME = (id: number): ChainName => {
       return ChainName.GNOSIS;
     case 1284:
       return ChainName.MOONBEAM;
+    case 96:
+      return ChainName.BKC;
+    case 25925:
+      return ChainName.BKC_TESTNET;
+    case 2456:
+      return ChainName.FREECITY;
+    case 5456:
+      return ChainName.FREECITY_TESTNET;
     default:
       throw new Error(`Unknown chain id: ${id}`);
   }
@@ -324,6 +378,14 @@ export const ID_TO_PROVIDER = (id: ChainId): string => {
       return process.env.JSON_RPC_PROVIDER_CELO_ALFAJORES!;
     case ChainId.BSC:
       return process.env.JSON_RPC_PROVIDER_BSC!;
+    case ChainId.BKC:
+      return process.env.JSON_RPC_PROVIDER_BKC!;
+    case ChainId.BKC_TESTNET:
+      return process.env.JSON_RPC_PROVIDER_BKC_TESTNET!;
+    case ChainId.FREECITY:
+      return process.env.JSON_RPC_PROVIDER_FREECITY!;
+    case ChainId.FREECITY_TESTNET:
+      return process.env.JSON_RPC_PROVIDER_FREECITY_TESTNET!;
     default:
       throw new Error(`Chain id: ${id} not supported`);
   }
@@ -371,6 +433,34 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId in ChainId]: Token } = {
     18,
     'WBNB',
     'Wrapped BNB'
+  ),
+  [ChainId.BKC]: new Token(
+    96,
+    '0x67ebd850304c70d983b2d1b93ea79c7cd6c3f6b5',
+    18,
+    'KKUB',
+    'Wrapped KUB'
+  ),
+  [ChainId.BKC_TESTNET]: new Token(
+    25925,
+    '0x1de8a5c87d421f53ee4ae398cc766e62e88e9518',
+    18,
+    'KKUB',
+    'Wrapped KUB'
+  ),
+  [ChainId.FREECITY]: new Token(
+    2456,
+    '0x36419AC651262b91E92aC2A97809E81aefD08D53',
+    18,
+    'WZENNY',
+    'Wrapped ZENNY'
+  ),
+  [ChainId.FREECITY_TESTNET]: new Token(
+    5456,
+    '0x36419AC651262b91E92aC2A97809E81aefD08D53', // TODO: change this
+    18,
+    'WZENNY',
+    'Wrapped ZENNY'
   ),
   [ChainId.OPTIMISM]: new Token(
     ChainId.OPTIMISM,
@@ -560,6 +650,54 @@ class BscNativeCurrency extends NativeCurrency {
   }
 }
 
+function isBkc(chainId: number): chainId is ChainId.BKC {
+  return chainId === ChainId.BKC;
+}
+
+class BkcNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isBkc(this.chainId)) throw new Error('Not bkc');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isBkc(chainId)) throw new Error('Not bkc');
+    super(chainId, 18, 'KUB', 'KUB');
+  }
+}
+
+function isFreeCity(chainId: number): chainId is ChainId.FREECITY {
+  return chainId === ChainId.FREECITY;
+}
+
+class FreeCityNativeCurrency extends NativeCurrency {
+  equals(other: Currency): boolean {
+    return other.isNative && other.chainId === this.chainId;
+  }
+
+  get wrapped(): Token {
+    if (!isFreeCity(this.chainId)) throw new Error('Not freecity');
+    const nativeCurrency = WRAPPED_NATIVE_CURRENCY[this.chainId];
+    if (nativeCurrency) {
+      return nativeCurrency;
+    }
+    throw new Error(`Does not support this chain ${this.chainId}`);
+  }
+
+  public constructor(chainId: number) {
+    if (!isFreeCity(chainId)) throw new Error('Not freecity');
+    super(chainId, 18, 'ZENNY', 'ZENNY');
+  }
+}
+
 function isMoonbeam(chainId: number): chainId is ChainId.MOONBEAM {
   return chainId === ChainId.MOONBEAM;
 }
@@ -616,6 +754,10 @@ export function nativeOnChain(chainId: number): NativeCurrency {
     cachedNativeCurrency[chainId] = new MoonbeamNativeCurrency(chainId);
   else if (isBsc(chainId))
     cachedNativeCurrency[chainId] = new BscNativeCurrency(chainId);
+  else if (isBkc(chainId))
+    cachedNativeCurrency[chainId] = new BkcNativeCurrency(chainId);
+  else if (isFreeCity(chainId))
+    cachedNativeCurrency[chainId] = new FreeCityNativeCurrency(chainId);
   else cachedNativeCurrency[chainId] = ExtendedEther.onChain(chainId);
 
   return cachedNativeCurrency[chainId]!;

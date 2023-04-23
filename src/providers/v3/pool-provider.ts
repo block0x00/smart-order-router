@@ -225,12 +225,24 @@ export class V3PoolProvider implements IV3PoolProvider {
       return { poolAddress: cachedAddress, token0, token1 };
     }
 
-    const poolAddress = computePoolAddress({
-      factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId]!,
-      tokenA: token0,
-      tokenB: token1,
-      fee: feeAmount,
-    });
+    let poolAddress
+    if(this.chainId == 2456){
+      const initCodeHashManualOverride = '0x65773759c368e5d2ec88e3431643826be61bb4c161f57fbf4ce875b6b03b3c80'
+      poolAddress = computePoolAddress({
+        factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId]!,
+        tokenA: token0,
+        tokenB: token1,
+        fee: feeAmount,
+        initCodeHashManualOverride
+      });
+    }else{
+      poolAddress = computePoolAddress({
+        factoryAddress: V3_CORE_FACTORY_ADDRESSES[this.chainId]!,
+        tokenA: token0,
+        tokenB: token1,
+        fee: feeAmount,
+      });
+    }
 
     this.POOL_ADDRESS_CACHE[cacheKey] = poolAddress;
 

@@ -3,7 +3,13 @@ import { Token, TradeType } from '@uniswap/sdk-core';
 import { FeeAmount } from '@uniswap/v3-sdk';
 import _ from 'lodash';
 
-import { ITokenListProvider, IV2SubgraphProvider, V2SubgraphPool, } from '../../../providers';
+import {
+
+  ITokenListProvider,
+  IV2SubgraphProvider,
+
+  V2SubgraphPool
+} from '../../../providers';
 import {
   CELO,
   CELO_ALFAJORES,
@@ -52,6 +58,8 @@ import {
   WMATIC_POLYGON,
   WMATIC_POLYGON_MUMBAI,
   WXDAI_GNOSIS,
+  BUSD_FREECITY,
+  USDT_BKC, USDT_BKC_TESTNET,
 } from '../../../providers/token-provider';
 import { IV2PoolProvider, V2PoolAccessor, } from '../../../providers/v2/pool-provider';
 import { IV3PoolProvider, V3PoolAccessor, } from '../../../providers/v3/pool-provider';
@@ -175,6 +183,16 @@ const baseTokensByChain: { [chainId in ChainId]?: Token[] } = {
     USDC_BSC,
     USDT_BSC,
   ],
+  [ChainId.BKC]: [
+    USDT_BKC
+  ],
+  [ChainId.BKC_TESTNET]: [
+    USDT_BKC_TESTNET
+  ],
+  [ChainId.FREECITY]: [
+    BUSD_FREECITY
+  ],
+  [ChainId.FREECITY_TESTNET]: [],
 };
 
 export async function getV3CandidatePools({
@@ -270,9 +288,7 @@ export async function getV3CandidatePools({
       .map((pool) => pool.id)
       .forEach((poolAddress) => poolAddressesSoFar.add(poolAddress));
   };
-
   const baseTokens = baseTokensByChain[chainId] ?? [];
-
   const topByBaseWithTokenIn = _(baseTokens)
     .flatMap((token: Token) => {
       return _(subgraphPoolsSorted)
@@ -292,6 +308,8 @@ export async function getV3CandidatePools({
     .sortBy((tokenListPool) => -tokenListPool.tvlUSD)
     .slice(0, topNWithBaseToken)
     .value();
+
+
 
   const topByBaseWithTokenOut = _(baseTokens)
     .flatMap((token: Token) => {

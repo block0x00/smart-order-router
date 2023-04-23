@@ -61,6 +61,14 @@ const SUBGRAPH_URL_BY_CHAIN: { [chainId in ChainId]?: string } = {
     'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-v3-gorli',
   [ChainId.BSC]:
     'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain',
+  [ChainId.BKC]:
+    'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain', // TODO: Change This
+  [ChainId.BKC_TESTNET]:
+    'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain', // TODO: Change This
+  [ChainId.FREECITY]:
+    'https://graph.chain.freecity.finance/subgraphs/name/official/uni-v3',
+  [ChainId.FREECITY_TESTNET]:
+    'https://api.thegraph.com/subgraphs/name/ilyamk/uniswap-v3---bnb-chain', // TODO: Change This
 };
 
 const PAGE_SIZE = 1000; // 1k is max possible query size from subgraph.

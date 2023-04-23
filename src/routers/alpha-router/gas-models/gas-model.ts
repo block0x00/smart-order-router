@@ -2,6 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 import { Token } from '@uniswap/sdk-core';
 
 import {
+  BUSD_FREECITY,
   CUSD_CELO,
   CUSD_CELO_ALFAJORES,
   DAI_ARBITRUM,
@@ -31,7 +32,7 @@ import {
   USDC_POLYGON,
   USDC_ROPSTEN,
   USDT_ARBITRUM,
-  USDT_ARBITRUM_RINKEBY,
+  USDT_ARBITRUM_RINKEBY, USDT_BKC, USDT_BKC_TESTNET,
   USDT_BSC,
   USDT_GÖRLI,
   USDT_KOVAN,
@@ -40,7 +41,7 @@ import {
   USDT_OPTIMISM_GOERLI,
   USDT_OPTIMISTIC_KOVAN,
   USDT_ROPSTEN,
-  WBTC_GÖRLI,
+  WBTC_GÖRLI
 } from '../../../providers/token-provider';
 import { IV2PoolProvider } from '../../../providers/v2/pool-provider';
 import {
@@ -85,6 +86,10 @@ export const usdGasTokensByChain: { [chainId in ChainId]?: Token[] } = {
   [ChainId.GNOSIS]: [USDC_ETHEREUM_GNOSIS],
   [ChainId.MOONBEAM]: [USDC_MOONBEAM],
   [ChainId.BSC]: [USDT_BSC, USDC_BSC, DAI_BSC],
+  [ChainId.BKC]: [USDT_BKC],
+  [ChainId.BKC_TESTNET]: [USDT_BKC_TESTNET],
+  [ChainId.FREECITY]: [BUSD_FREECITY],
+  [ChainId.FREECITY_TESTNET]: [],
 };
 
 export type L1ToL2GasCosts = {

@@ -6,7 +6,7 @@ import { ChainId, log, WRAPPED_NATIVE_CURRENCY } from '../util';
 import { ICache } from './cache';
 import {
   BTC_BSC,
-  BUSD_BSC,
+  BUSD_BSC, BUSD_FREECITY,
   CELO,
   CELO_ALFAJORES,
   CEUR_CELO,
@@ -41,7 +41,7 @@ import {
   USDC_OPTIMISTIC_KOVAN,
   USDC_POLYGON,
   USDT_ARBITRUM,
-  USDT_ARBITRUM_RINKEBY,
+  USDT_ARBITRUM_RINKEBY, USDT_BKC, USDT_BKC_TESTNET,
   USDT_BSC,
   USDT_MAINNET,
   USDT_OPTIMISM,
@@ -54,7 +54,7 @@ import {
   WBTC_OPTIMISM_GOERLI,
   WBTC_OPTIMISTIC_KOVAN,
   WMATIC_POLYGON,
-  WMATIC_POLYGON_MUMBAI,
+  WMATIC_POLYGON_MUMBAI
 } from './token-provider';
 
 // These tokens will added to the Token cache on initialization.
@@ -154,6 +154,19 @@ export const CACHE_SEED_TOKENS: {
     DAI: DAI_BSC,
     BTC: BTC_BSC,
     WBNB: WRAPPED_NATIVE_CURRENCY[ChainId.BSC],
+  },
+  [ChainId.FREECITY]: {
+    BUSD: BUSD_FREECITY,
+    WZENNY: WRAPPED_NATIVE_CURRENCY[ChainId.FREECITY],
+  },
+  [ChainId.FREECITY_TESTNET]: {},
+  [ChainId.BKC]: {
+    USDT: USDT_BKC,
+    KKUB: WRAPPED_NATIVE_CURRENCY[ChainId.BKC],
+  },
+  [ChainId.BKC_TESTNET]: {
+    USDT: USDT_BKC_TESTNET,
+    KKUB: WRAPPED_NATIVE_CURRENCY[ChainId.BKC_TESTNET],
   },
 
   // Currently we do not have providers for Moonbeam mainnet or Gnosis testnet
